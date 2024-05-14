@@ -1,0 +1,33 @@
+spring:
+  #数据源配置
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/yearbook?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #文件大小限制
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 2GB
+
+  #Thymeleaf模板配置
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+#映射文件路径
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#pagehelper配置-分页插件
+pagehelper:
+  helper-dialect: mysql #数据库
+  reasonable: false
+  support-methods-arguments: true
+  params: count=countSql
+
+#服务器基本配置
+server:
+  port: 8081
+

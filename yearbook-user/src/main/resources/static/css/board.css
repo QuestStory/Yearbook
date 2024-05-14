@@ -1,0 +1,286 @@
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.self{
+    overflow: unset;
+}
+
+.item{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100px);
+    min-height: 600px;
+}
+
+.dataInfo{
+    width: 77vw;
+    height: 80vh;
+    background-color: #fff5;
+    box-shadow: 0 8px 16px #0005;
+    border-radius: 16px;
+    overflow: hidden;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+    color: #000000;
+}
+
+.paper {
+    width: 235px;
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    color: #666;
+}
+
+.paper dt {
+    width: 220px;
+    height: 18px;
+    cursor: move;
+    padding-left: 15px;
+    padding-top: 50px;
+}
+
+.paper dt .username {
+    font-size: 13px;
+    float: left;
+    color: #3875D7;
+    padding-left: 5px;
+}
+
+.paper dt .num {
+    font-size: 12px;
+    float: right;
+    color: #81C01A;
+    padding-right: 10px;
+}
+
+.paper .message {
+    width: 205px;
+    height: auto;
+    overflow: hidden;
+    padding: 5px 5px 5px 25px;
+    font-size: 12px;
+    word-break: break-all;
+    word-wrap: normal;
+    line-height: 18px;
+}
+
+.paper .tail {
+    width: 205px;
+    height: 40px;
+    padding: 32px 5px 0 25px;
+}
+
+.paper .tail .time {
+    font-size: 12px;
+    color: #999999;
+    float: left;
+}
+
+.paper .tail .close {
+    display: block;
+    width: 29px;
+    height: 24px;
+    background: url(../system/paper/close.png) no-repeat;
+    float: right;
+}
+
+.paper .tail .close:hover {
+    background-position: -43px 0;
+}
+
+.a1 dt {
+    background: url(../system/paper/a1_1.gif);
+}
+
+.a1 .message {
+    background: url(../system/paper/a1_2.gif) repeat-y -2px;
+}
+
+.a1 .tail {
+    background: url(../system/paper/a1_3.gif) no-repeat;
+}
+
+.a2 dt {
+    background: url(../system/paper/a2_1.gif);
+}
+
+.a2 .message {
+    background: url(../system/paper/a2_2.gif) repeat-y -2px;
+}
+
+.a2 .tail {
+    background: url(../system/paper/a2_3.gif) no-repeat;
+}
+
+.a3 dt {
+    background: url(../system/paper/a3_1.gif);
+}
+
+.a3 .message {
+    background: url(../system/paper/a3_2.gif) repeat-y -2px;
+}
+
+.a3 .tail {
+    background: url(../system/paper/a3_3.gif) no-repeat;
+}
+
+.a4 dt {
+    background: url(../system/paper/a4_1.gif);
+}
+
+.a4 .message {
+    background: url(../system/paper/a4_2.gif) repeat-y -2px;
+}
+
+.a4 .tail {
+    background: url(../system/paper/a4_3.gif) no-repeat;
+}
+
+.a5 dt {
+    background: url(../system/paper/a5_1.gif);
+}
+
+.a5 .message {
+    background: url(../system/paper/a5_2.gif) repeat-y -2px;
+}
+
+.a5 .tail {
+    background: url(../system/paper/a5_3.gif) no-repeat;
+}
+
+.addPaper {
+    width: 100%;
+    position: fixed;
+    bottom: 6px;
+    display: flex;
+    justify-content: center;
+}
+
+.addPaper form {
+    display: flex;
+    align-items: center;
+}
+
+.addPaper form textarea {
+    margin-right: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 700px;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+    white-space: pre-line;
+}
+
+.addPaper form input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+/* 让外层框变成方形 */
+.addPaper form input[type="radio"]:checked {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* 清除默认的单选框样式 */
+.addPaper form input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #333;
+    cursor: pointer;
+    position: relative;
+}
+
+.button {
+    width: 60px;
+    height: 40px;
+    display: inline-block;
+    border: 0;
+    border-radius: 4px;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    font-size: 18px;
+    color: gray;
+    z-index: 1;
+}
+
+.button:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.button:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    background-color: #39bda7;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.button:hover {
+    color: #ffffff;
+    border: 1px solid #39bda7;
+}
+
+.button:hover:before {
+    top: -35%;
+    background-color: #39bda7;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button:hover:after {
+    top: -45%;
+    background-color: #39bda7;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}

@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+a{
+    color: inherit;
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("../system/back/4女孩.jpg") no-repeat;
+    background-size: cover;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: var(--headerCOlor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header h2 {
+    color: var(--headerFont);
+}
+
+main {
+    width: 80%;
+    height: calc(100vh - 100px);
+}
+
+.cardList {
+    width: 100%;
+    height: 100%;
+    overflow: overlay;
+}
+
+.cardList form {
+    margin: 30px 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: #e5e5e5;
+}
+
+.cardList form fieldset {
+    padding: 20px;
+    border: solid #3ea0fb;
+    border-radius: 10px;
+}
+
+.cardList form fieldset legend {
+    padding: 10px;
+    background: #55557f;
+    color: white;
+    font-weight: bolder;
+    border-radius: 15px 0 0 0;
+}
+
+.cardList form:not(:first-child) input {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #000;
+    font-family: 'Opan Sans', sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 16px;
+    transition: background 0.3s ease-in-out;
+    width: 60%;
+}
+
+.cardList form:not(:first-child) input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.cardList form select{
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #000;
+    font-family: 'Opan Sans', sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 16px;
+    transition: background 0.3s ease-in-out;
+    width: 60%;
+}
+
+.cardList form select:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.cardList form .notice{
+    margin-left: 10px;
+    color: red;
+}
+
+#hobby{
+    display: inline;
+    width: 60%;
+}
+
+.hobbyItem{
+    width: 14.67% !important;
+}
+
+.formButton{
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #000;
+    font-family: 'Opan Sans', sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 16px;
+    transition: background 0.3s ease-in-out;
+    width: 80px;
+}
+
+.formButton:hover{
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+    background-color: #abd2f8;
+}
+
+
+/* 头像处理 */
+.cutbox {
+    display: flex;
+}
+
+.cutbox .cutCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cutbox .cutCard .cutImage {
+}
+
+.cutbox .cutCard .cutImage img {
+    max-height: 300px;
+}
+
+.cutbox .cutCard .cutImage input {
+    display: none;
+}
+
+.cutbox .showCard {
+    display: flex;
+    margin-left: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cutbox .showCard .showImage {
+    width: 210px;
+    height: 210px;
+    border: 2px dashed grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cutbox .showCard .showImage img {
+    display: block;
+    width: 200px;
+}
+
+.handelButton {
+    margin-top: 20px;
+}
+
+.handelButton button {
+    background: #fff;
+    border: none;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    width: 120px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: skew(-21deg);
+}
+
+.handelButton span {
+    display: inline-block;
+    transform: skew(21deg);
+}
+
+.handelButton button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: 0;
+    background: rgb(20, 20, 20);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.2s;
+}
+
+.handelButton button:hover {
+    color: #fff;
+}
+
+.handelButton button:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    background-color: var(--headerCOlor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer span {
+    color: var(--headerFont);
+}

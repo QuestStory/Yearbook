@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.moon.mapper.TagboardMapper">
+
+    <select id="findAll" resultType="cn.moon.entity.Tagboard">
+        select * from yearbook_tagboard
+    </select>
+
+    <select id="findOne" resultType="cn.moon.entity.Tagboard">
+        select * from yearbook_tagboard where classmateId=#{classmateId}
+    </select>
+
+    <insert id="insertTag" parameterType="cn.moon.entity.Tagboard">
+        insert into yearbook_tagboard(classId,classmateId,message,tagStyle,createBy,createTime) values (#{classId},#{classmateId},#{message},#{tagStyle},#{createBy},#{createTime})
+    </insert>
+
+    <delete id="deleteTag" parameterType="Integer">
+        delete from yearbook_tagboard where id=#{id}
+    </delete>
+
+
+</mapper>

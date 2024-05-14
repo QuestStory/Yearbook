@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.moon.mapper.ClassmateMapper">
+
+    <select id="findOne" resultType="cn.moon.entity.Classmate">
+        select * from yearbook_classmate where id=#{id}
+    </select>
+
+    <select id="findAll" resultType="cn.moon.entity.Classmate">
+        select * from yearbook_classmate
+    </select>
+
+    <select id="findByQuery" resultType="cn.moon.entity.Classmate">
+        select * from yearbook_classmate
+        <where>
+            <if test="searchText != null and searchText != ''">
+                or id like concat('%',#{searchText},'%') or name like concat('%',#{searchText},'%') or nickname like concat('%',#{searchText},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="randomFindSigns" resultType="cn.moon.entity.Classmate">
+        select name,sign from yearbook_classmate order by rand() limit 1
+    </select>
+
+    <update id="updateProfile">
+        update yearbook_classmate set profile=#{profile} where id=#{id}
+    </update>
+
+    <update id="updatePassword">
+        update yearbook_classmate set password=#{password} where id=#{id}
+    </update>
+
+    <update id="updateBasic">
+        update yearbook_classmate set `name`=#{name},nickname=#{nickname},gender=#{gender},birthday=#{birthday} where id=#{id}
+    </update>
+
+    <update id="updateContact">
+        update yearbook_classmate set qq=#{qq},wechat=#{wechat},email=#{email},phone=#{phone},address=#{address} where id=#{id}
+    </update>
+
+    <update id="updateIntro">
+        update yearbook_classmate set sign=#{sign},hobby=#{hobby},message=#{message} where id=#{id}
+    </update>
+
+</mapper>

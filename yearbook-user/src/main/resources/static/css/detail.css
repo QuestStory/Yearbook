@@ -1,0 +1,233 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	width: 100%;
+	height: 50px;
+	background: #00283a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+header h2 {
+	color: #f0ffff;
+}
+
+main {
+	width: 100%;
+	height: calc(100vh - 100px);
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+}
+
+main aside {
+	padding: 10px;
+	width: 320px;
+	height: 100%;
+	background: #f0f5ff88;
+	overflow: overlay;
+}
+
+main aside .profile {
+	position: relative;
+}
+
+main aside .profile img {
+	width: 100%;
+	opacity: 1;
+	border-radius: 10px;
+}
+
+main aside .profile h3 {
+	position: absolute;
+	display: block;
+	width: 100%;
+	/*background: #00aaff88;*/
+	border-radius: 0 0 10px 10px;
+	text-align: center;
+	bottom: 4px;
+}
+
+main aside .info {
+	margin-top: 50px;
+}
+
+main aside .info li {
+	margin: 10px 0;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+
+main aside .info li em {
+	display: inline-block;
+	width: 70px;
+}
+
+main aside .info li span {
+	color: #05aa47;
+}
+
+main article {
+	padding: 0px 10px;
+	width: 100%;
+	min-width: 560px;
+	height: 100%;
+	background-image: url(../system/back/4女孩.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: overlay;
+}
+
+main article::-webkit-scrollbar {
+	width: 0;
+}
+
+
+main article h3 {
+	display: flex;
+	align-items: center;
+	color: var(--headerFont);
+}
+
+main article textarea {
+	width: 540px;
+	min-height: 100px;
+	max-height: 200px;
+	padding: 10px;
+	border: none;
+	border-radius: 10px;
+	resize: none;
+	opacity: 0.6;
+	outline: none;
+}
+
+main article .video img {
+	width: 540px;
+	border-radius: 10px;
+}
+
+main article .video video {
+	width: 540px;
+	border-radius: 10px;
+}
+
+main article .video video:focus {
+	outline:none;
+}
+
+main article .borderbotm {
+	flex: 1;
+	border-bottom: 3px dashed rgb(187, 185, 185);
+	height: 0px;
+	margin: 35px 20px;
+}
+
+main article .hobby {}
+
+main article .hobby-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+main article .hobby-list div {
+	width: 150px;
+	height: 150px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	padding: 20px;
+	border-radius: 10px;
+	background: #00aaff88;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+main article .hobby-list h4 {
+	text-align: center;
+}
+
+footer {
+	width: 100%;
+	height: 50px;
+	background: #00283a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+footer .contact{
+	display: flex;
+}
+
+footer .contact span{
+	color: white;
+}
+
+footer .contact .tip{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	visibility: hidden;
+	position: relative;
+}
+
+footer .contact .tip:hover,:active{
+	visibility: visible;
+}
+
+footer .contact .tip p{
+	position: absolute;
+	bottom: 55px;
+	width: 150px;
+	height: 50px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+	font-family: "Microsoft YaHei";
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+footer .contact .tip p:after {
+	position: absolute;
+	top: 40px;
+	left: calc(50% - 10px);
+	content: '';
+	border-style: solid;
+	border-width: 10px;
+	border-color: #fff #fff transparent transparent;
+	transform: rotate(135deg);
+	box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.1);
+}
+
+footer .contact .tip a{
+	visibility: visible;
+}
+
+footer .contact .tip a svg {
+	margin: 0 20px;
+}
+
+footer .contact .tip a svg path {
+	transition: .2s ease-in-out;
+}
+
+footer .contact .tip a:hover svg path {
+	fill: #ff8b8b;
+}
