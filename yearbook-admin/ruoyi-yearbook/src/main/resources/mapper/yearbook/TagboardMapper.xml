@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.yearbook.mapper.TagboardMapper">
+    
+    <resultMap type="Tagboard" id="TagboardResult">
+        <result property="id"    column="id"    />
+        <result property="classId"    column="classId"    />
+        <result property="classmateId"    column="classmateId"    />
+        <result property="message"    column="message"    />
+        <result property="tagStyle"    column="tagStyle"    />
+        <result property="createBy"    column="createBy"    />
+        <result property="createTime"    column="createTime"    />
+    </resultMap>
+
+    <sql id="selectTagboardVo">
+        select id, classId, classmateId, message, tagStyle, createBy, createTime from yearbook_tagboard
+    </sql>
+
+    <select id="selectTagboardList" parameterType="Tagboard" resultMap="TagboardResult">
+        <include refid="selectTagboardVo"/>
+        <where>  
+            <if test="id != null "> and id = #{id}</if>
+            <if test="message != null  and message != ''"> and message like concat('%', #{message}, '%')</if>
+            <if test="createBy != null  and createBy != ''"> and createBy like concat('%', #{createBy}, '%')</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and createTime between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectTagboardById" parameterType="Integer" resultMap="TagboardResult">
+        <include refid="selectTagboardVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTagboard" parameterType="Tagboard" useGeneratedKeys="true" keyProperty="id">
+        insert into yearbook_tagboard
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classId != null">classId,</if>
+            <if test="classmateId != null">classmateId,</if>
+            <if test="message != null">message,</if>
+            <if test="tagStyle != null">tagStyle,</if>
+            <if test="createBy != null">createBy,</if>
+            <if test="createTime != null">createTime,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classId != null">#{classId},</if>
+            <if test="classmateId != null">#{classmateId},</if>
+            <if test="message != null">#{message},</if>
+            <if test="tagStyle != null">#{tagStyle},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTagboard" parameterType="Tagboard">
+        update yearbook_tagboard
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="classId != null">classId = #{classId},</if>
+            <if test="classmateId != null">classmateId = #{classmateId},</if>
+            <if test="message != null">message = #{message},</if>
+            <if test="tagStyle != null">tagStyle = #{tagStyle},</if>
+            <if test="createBy != null">createBy = #{createBy},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTagboardById" parameterType="Integer">
+        delete from yearbook_tagboard where id = #{id}
+    </delete>
+
+    <delete id="deleteTagboardByIds" parameterType="String">
+        delete from yearbook_tagboard where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

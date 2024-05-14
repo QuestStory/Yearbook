@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.yearbook.mapper.TopicMapper">
+    
+    <resultMap type="Topic" id="TopicResult">
+        <result property="id"    column="id"    />
+        <result property="classId"    column="classId"    />
+        <result property="classmateId"    column="classmateId"    />
+        <result property="title"    column="title"    />
+        <result property="subtitle"    column="subtitle"    />
+        <result property="type"    column="type"    />
+        <result property="cover"    column="cover"    />
+        <result property="createBy"    column="createBy"    />
+        <result property="createTime"    column="createTime"    />
+    </resultMap>
+
+    <sql id="selectTopicVo">
+        select id, classId, classmateId, title, subtitle, type, cover, createBy, createTime from yearbook_topic
+    </sql>
+
+    <select id="selectTopicList" parameterType="Topic" resultMap="TopicResult">
+        <include refid="selectTopicVo"/>
+        <where>  
+            <if test="id != null "> and id = #{id}</if>
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="createBy != null  and createBy != ''"> and createBy like concat('%', #{createBy}, '%')</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and createTime between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectTopicById" parameterType="Integer" resultMap="TopicResult">
+        <include refid="selectTopicVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTopic" parameterType="Topic" useGeneratedKeys="true" keyProperty="id">
+        insert into yearbook_topic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classId != null">classId,</if>
+            <if test="classmateId != null">classmateId,</if>
+            <if test="title != null">title,</if>
+            <if test="subtitle != null">subtitle,</if>
+            <if test="type != null">type,</if>
+            <if test="cover != null">cover,</if>
+            <if test="createBy != null">createBy,</if>
+            <if test="createTime != null">createTime,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classId != null">#{classId},</if>
+            <if test="classmateId != null">#{classmateId},</if>
+            <if test="title != null">#{title},</if>
+            <if test="subtitle != null">#{subtitle},</if>
+            <if test="type != null">#{type},</if>
+            <if test="cover != null">#{cover},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTopic" parameterType="Topic">
+        update yearbook_topic
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="classId != null">classId = #{classId},</if>
+            <if test="classmateId != null">classmateId = #{classmateId},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="subtitle != null">subtitle = #{subtitle},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="cover != null">cover = #{cover},</if>
+            <if test="createBy != null">createBy = #{createBy},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTopicById" parameterType="Integer">
+        delete from yearbook_topic where id = #{id}
+    </delete>
+
+    <delete id="deleteTopicByIds" parameterType="String">
+        delete from yearbook_topic where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
